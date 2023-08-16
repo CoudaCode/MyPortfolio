@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
+import { Routes, Route } from "react-router-dom";
+import Acceuil from "./pages/Acceuil.jsx";
+import CompetenceTodo from "./components/Admin/DisplayTodo/Competence.jsx";
+import CreateCompetence from "./components/Admin/CreateTodo/Competence.jsx";
+import ExperienceTodo from "./components/Admin/DisplayTodo/Experience.jsx";
+import CreateExperience from "./components/Admin/CreateTodo/Experience.jsx";
+import FormationTodo from "./components/Admin/DisplayTodo/Formation.jsx";
+import CreateFormation from "./components/Admin/CreateTodo/Formation.jsx";
+import ProjetTodo from "./components/Admin/DisplayTodo/Projets.jsx";
+import CreateProjet from "./components/Admin/CreateTodo/Projets.jsx";
 
+import "./App.css";
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="todo-Container">
+      <Routes>
+        <Route exact path="/" element={<Acceuil />} />
+        <Route path="/addCompetence" element={<CompetenceTodo />} />
+        <Route path="/add-competence" element={<CreateCompetence />} />
+
+        <Route path="/addExperience" element={<ExperienceTodo />} />
+        <Route path="/add-experience" element={<CreateExperience />} />
+
+        <Route path="/addFormation" element={<FormationTodo />} />
+        <Route path="/add-formation" element={<CreateFormation />} />
+
+        <Route path="/addProjet" element={<ProjetTodo />} />
+        <Route path="/add-projet" element={<CreateProjet />} />
+      </Routes>
+    </div>
+  );
 }
 
-export default App
+export default App;
