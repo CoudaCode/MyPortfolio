@@ -21,13 +21,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("Image"));
 app.use("/Image", express.static(path.join(__dirname, "../Image")));
-// app.use(express.static(path.join(__dirname, "../client/dist")));
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
-// if (inProduction) {
-//   app.get("/*", (_, res) => {
-//     res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-//   });
-// }
+if (inProduction) {
+  app.get("/*", (_, res) => {
+    res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+  });
+}
 
 connectDB()
   .then(() => {
